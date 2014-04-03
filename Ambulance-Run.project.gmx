@@ -11,12 +11,19 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\ambulance_accelerate.gml</script>
+    <script>scripts\ambulance_decelerate.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\ambulance</object>
     <object>objects\road_2_lanes</object>
+    <object>objects\logic</object>
+    <object>objects\road</object>
+    <object>objects\roads</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\level_1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

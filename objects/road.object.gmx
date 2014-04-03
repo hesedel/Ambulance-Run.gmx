@@ -83,6 +83,54 @@
       </action>
       <action>
         <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>road_step</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>road_repeat</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>201</id>
         <kind>0</kind>
         <userelative>-1</userelative>
@@ -187,7 +235,53 @@
 step = floor(y / (room_height / 2));
 if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
     step_current = step;
-    instance_create(128,-(step + 1) * (room_height / 2),road_2_lanes);
+
+    if(step &gt; 1 &amp;&amp; road_repeat == 0)
+        road_step++;
+
+    if(road_step &gt; array_length_1d(global.room_step))
+        road_step = 0;
+
+    r_lanes = global.room_step[road_step,0];
+    r_column = global.room_step[road_step,1];
+    r_repeat = global.room_step[road_step,0];
+        
+    switch(r_lanes) {
+        case 4:
+            road_lane = road_4_lanes;
+            break;
+        case 3:
+            road_lane = road_3_lanes;
+            break;
+        default:
+            road_lane = road_2_lanes;
+    }
+
+    road_new = instance_create(64 * r_column,-(step + 1) * (room_height / 2),road_lane);
+
+    // load vehicles
+    with(road_new) {
+        lane_random = irandom(road.r_lanes - 1);
+        y_random = random_range(y,y + sprite_height);
+        with(road) {
+            road_new_x = road_new.x;
+            //road_new_y = road_new.y;
+            //road_new_sprite_height = road_new.sprite_height;
+            vehicle_new = instance_create(road_new_x + 32 + (64 * road_new.lane_random),road_new.y_random,car);
+            with(vehicle_new) {
+                //do {
+                //    lane_random = irandom(road.r_lanes - 1);
+                //    y_random = random_range(road.road_new_y,road.road_new_y + road.road_new_sprite_height);
+                //    x = road.road_new_x + 32 + (64 * lane_random);
+                //    y = random_range(road.road_new_y,road.road_new_y + road.road_new_sprite_height);
+                //} until(!place_meeting(x,y,vehicles));
+            }
+        }
+    }
+
+    if(road_repeat == 0)
+        road_repeat = r_repeat;
+    road_repeat--;
 }
 step_previous = step;
 </string>

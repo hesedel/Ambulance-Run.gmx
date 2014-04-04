@@ -43,6 +43,7 @@
         <object>objects\exit_1_se</object>
         <object>objects\exit_1_sw</object>
       </objects>
+      <object>objects\exits</object>
     </objects>
   </objects>
   <rooms name="rooms">

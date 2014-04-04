@@ -40,7 +40,7 @@ x = x_init + road.x;
 y = y_init + road.y;
 
 // destroy
-if(y &gt; room_height + sprite_height)
+if(y &gt; room_height * 2)
     instance_destroy();
 </string>
           </argument>

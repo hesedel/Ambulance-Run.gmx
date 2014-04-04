@@ -92,7 +92,7 @@ with(ambulance) {
     image_angle = 0;
     if(keyboard_check(vk_right)) {
         if(speed_current &gt; 0)
-            image_angle = -abs(speed_current);
+            image_angle = -((speed_max * 3) - abs(speed_current));
         else if(speed_current &lt; 0)
             image_angle = abs(speed_current) * 2;
         if(place_meeting(x + sprite_width,y,roads))
@@ -100,7 +100,7 @@ with(ambulance) {
     }
     if(keyboard_check(vk_left)) {
         if(speed_current &gt; 0)
-            image_angle = abs(speed_current);
+            image_angle = (speed_max * 3) - abs(speed_current);
         else if(speed_current &lt; 0)
             image_angle = -(abs(speed_current) * 2);
         if(place_meeting(x - sprite_width,y,roads))

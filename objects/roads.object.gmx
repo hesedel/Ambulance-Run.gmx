@@ -51,6 +51,10 @@ y_init = y;
             <kind>1</kind>
             <string>x = x_init + road.x;
 y = y_init + road.y;
+
+// destroy
+if(y &gt; room_height + sprite_height)
+    instance_destroy();
 </string>
           </argument>
         </arguments>

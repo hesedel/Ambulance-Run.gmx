@@ -26,18 +26,22 @@
           <argument>
             <kind>1</kind>
             <string>if(!collision_line(
-    x - (sprite_width / 2),(((y_init - sprite_height / 2) - speed) - 8) + road.y,
-    x + (sprite_width / 2),(((y_init - sprite_height / 2) - speed) - 8) + road.y,
+    x - (sprite_width / 2),(((y_init - sprite_height / 2) - speed) - 16) + road.y,
+    x + (sprite_width / 2),(((y_init - sprite_height / 2) - speed) - 16) + road.y,
     vehicles,false,false
 ) &amp;&amp; !collision_line(
-    x - (sprite_width / 2),(((y_init - sprite_height / 2) - speed) - 8) + road.y,
-    x + (sprite_width / 2),(((y_init - sprite_height / 2) - speed) - 8) + road.y,
+    x - (sprite_width / 2),(((y_init - sprite_height / 2) - speed) - 16) + road.y,
+    x + (sprite_width / 2),(((y_init - sprite_height / 2) - speed) - 16) + road.y,
     ambulance,false,false
 ))
     y_init -= speed;
 
 x = x_init + road.x;
 y = y_init + road.y;
+
+// destroy
+if(y &gt; room_height + sprite_height)
+    instance_destroy();
 </string>
           </argument>
         </arguments>

@@ -3,7 +3,7 @@
   <spriteName>sprite_road_3_lanes</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>1</depth>
+  <depth>2</depth>
   <persistent>0</persistent>
   <parentName>roads</parentName>
   <maskName>&lt;undefined&gt;</maskName>

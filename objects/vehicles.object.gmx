@@ -26,12 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>if(!collision_line(
-    x - (sprite_width / 2),(((y_init - sprite_height / 2) - speed) - 16) + road.y,
-    x + (sprite_width / 2),(((y_init - sprite_height / 2) - speed) - 16) + road.y,
+    x - (sprite_width / 2),road.y + y_init - (sprite_height / 2) - speed - 16,
+    x + (sprite_width / 2),road.y + y_init - (sprite_height / 2) - speed - 16,
     vehicles,false,false
 ) &amp;&amp; !collision_line(
-    x - (sprite_width / 2),(((y_init - sprite_height / 2) - speed) - 16) + road.y,
-    x + (sprite_width / 2),(((y_init - sprite_height / 2) - speed) - 16) + road.y,
+    x - (sprite_width / 2),road.y + y_init - (sprite_height / 2) - speed - 16,
+    x + (sprite_width / 2),road.y + y_init - (sprite_height / 2) - speed - 16,
     ambulance,false,false
 ))
     y_init -= speed;

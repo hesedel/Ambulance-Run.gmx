@@ -25,6 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>y_current</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>step</string>
           </argument>
           <argument>
@@ -279,7 +303,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// load roads
+            <string>if(y &gt; y_current)
+    y_current = y;
+
 step = ceil(y / (room_height / 2));
 
 if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
@@ -288,7 +314,7 @@ if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
     if(step &gt; 1 &amp;&amp; road_repeat == 0)
         road_step++;
 
-    //
+    // repeat level
     if(road_step &gt; array_length_1d(global.room_step))
         road_step = 0;
 
@@ -307,7 +333,7 @@ if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
             road_lane = road_2_lanes;
     }
 
-    road_new = instance_create(64 * r_column,-(step + 1) * (room_height / 2),road_lane);
+    road_new = instance_create(64 * r_column,-((step + 1) * (room_height / 2)),road_lane);
 
     // load exits
     if(r_column + r_lanes &lt; r_column_previous + r_lanes_previous) {
@@ -366,6 +392,7 @@ if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
     if(road_repeat == 0)
         road_repeat = r_repeat;
     road_repeat--;
+
 }
 
 step_previous = step;

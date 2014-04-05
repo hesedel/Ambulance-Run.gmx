@@ -171,14 +171,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-if(!place_meeting(x,y,roads) &amp;&amp; place_meeting(x,y,exits)) {
-    if(!place_meeting(x + sprite_width,y,exits))
-        x -= 1;
-    if(!place_meeting(x - sprite_width,y,exits))
-        x += 1;
+            <string>// prevent ambulance from veering off the road to the right
+if(!place_meeting(x + sprite_width,y,roads)) {
+    x = instance_place(x,y,roads).x +
+        instance_place(x,y,roads).sprite_width -
+        (sprite_width / 2);
 }
-*/
+
+// prevent ambulance from veering off the road to the left
+if(!place_meeting(x - sprite_width,y,roads)) {
+    x = instance_place(x,y,roads).x +
+        (sprite_width / 2);
+}
 </string>
           </argument>
         </arguments>

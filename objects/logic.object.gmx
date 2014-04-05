@@ -83,29 +83,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(keyboard_check(vk_up) || keyboard_check(vk_down))
-    road.y = road.y + ambulance_accelerate();
-else
-    road.y = road.y + ambulance_decelerate();
+            <string>if(keyboard_check(vk_up) || (keyboard_check(vk_down) &amp;&amp; (road.y &gt; room_height / 2 &amp;&amp; road.y &gt; road.y_current - room_height * 1))) {
+    road.y += ambulance_accelerate(); // move ambulance forward or reverse
+} else
+    road.y += ambulance_decelerate(); // stop ambulance
 
 with(ambulance) {
     image_angle = 0;
+
     if(keyboard_check(vk_right)) {
-        if(speed_current &gt; 0)
-            image_angle = -((speed_max * 3) - abs(speed_current));
-        else if(speed_current &lt; 0)
+        if(speed_current &gt; 0) // forward
+            image_angle = -abs(speed_current);
+        else if(speed_current &lt; 0) // reverse
             image_angle = abs(speed_current) * 2;
+
+        // strafe ambulance right
         if(place_meeting(x + sprite_width,y,roads))
             x = x + (abs(speed_current) / 2);
+
     }
+
     if(keyboard_check(vk_left)) {
-        if(speed_current &gt; 0)
-            image_angle = (speed_max * 3) - abs(speed_current);
-        else if(speed_current &lt; 0)
+        if(speed_current &gt; 0) // forward
+            image_angle = abs(speed_current);
+        else if(speed_current &lt; 0) // reverse
             image_angle = -(abs(speed_current) * 2);
+
+        // strafe ambulance left
         if(place_meeting(x - sprite_width,y,roads))
             x = x - (abs(speed_current) / 2);
+
     }
+
 }
 </string>
           </argument>

@@ -83,9 +83,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(keyboard_check(vk_up) || (keyboard_check(vk_down) &amp;&amp; (road.y &gt; room_height / 2 &amp;&amp; road.y &gt; road.y_current - room_height * 1))) {
+            <string>if(
+    keyboard_check(vk_up) ||
+    (
+        keyboard_check(vk_down) &amp;&amp;
+        (
+            road.y + (ambulance.speed_current / ambulance.deceleration) &gt; 0 &amp;&amp;
+            road.y + (ambulance.speed_current / ambulance.deceleration) &gt; road.y_current - room_height
+        )
+    )
+)
     road.y += ambulance_accelerate(); // move ambulance forward or reverse
-} else
+else
     road.y += ambulance_decelerate(); // stop ambulance
 
 with(ambulance) {
@@ -98,7 +107,10 @@ with(ambulance) {
             image_angle = abs(speed_current) * 2;
 
         // strafe ambulance right
-        if(place_meeting(x + sprite_width,y,roads))
+        if(
+            place_meeting(x + sprite_width,y,roads) ||
+            place_meeting(x + sprite_width,y,exits)
+        )
             x = x + (abs(speed_current) / 2);
 
     }
@@ -110,7 +122,10 @@ with(ambulance) {
             image_angle = -(abs(speed_current) * 2);
 
         // strafe ambulance left
-        if(place_meeting(x - sprite_width,y,roads))
+        if(
+            place_meeting(x - sprite_width,y,roads) ||
+            place_meeting(x - sprite_width,y,exits)
+        )
             x = x - (abs(speed_current) / 2);
 
     }

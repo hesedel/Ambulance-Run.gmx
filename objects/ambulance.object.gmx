@@ -172,17 +172,62 @@
           <argument>
             <kind>1</kind>
             <string>// prevent ambulance from veering off the road to the right
-if(!place_meeting(x + sprite_width,y,roads)) {
+if(
+    (
+        place_meeting(x,y - (sprite_height / 2),roads) &amp;&amp;
+        place_meeting(x,y + (sprite_height / 2),roads)
+    ) &amp;&amp;
+    !place_meeting(x + sprite_width,y,roads)
+) {
     x = instance_place(x,y,roads).x +
         instance_place(x,y,roads).sprite_width -
         (sprite_width / 2);
 }
 
 // prevent ambulance from veering off the road to the left
-if(!place_meeting(x - sprite_width,y,roads)) {
+if(
+    (
+        place_meeting(x,y - (sprite_height / 2),roads) &amp;&amp;
+        place_meeting(x,y + (sprite_height / 2),roads)
+    ) &amp;&amp;
+    !place_meeting(x - sprite_width,y,roads)
+) {
     x = instance_place(x,y,roads).x +
         (sprite_width / 2);
 }
+
+// exits
+if(
+    place_meeting(x,y,exits) &amp;&amp;
+    (
+        !place_meeting(x,y - (sprite_height / 2),roads) ||
+        !place_meeting(x,y + (sprite_height / 2),roads)
+    )
+) {
+
+    if(!place_meeting(x + sprite_width,y,exits)) {
+        x_sprite = x;
+        while(!place_meeting(x_sprite + sprite_width,y,exits)) {
+            x_sprite -= .01;
+        }
+        x = x_sprite;
+    }
+
+    if(!place_meeting(x - sprite_width,y,exits)) {
+        x_sprite = x;
+        while(!place_meeting(x_sprite - sprite_width,y,exits)) {
+            x_sprite += .01;
+        }
+        x = x_sprite;
+    }
+
+}
+
+// exit angle
+if(place_meeting(x,y,exits) &amp;&amp; y &lt; instance_place(x,y,exits_n).y + (instance_place(x,y,exits_n).sprite_height / 2)) {
+    show_debug_message('yes');
+} else
+    show_debug_message('no');
 </string>
           </argument>
         </arguments>

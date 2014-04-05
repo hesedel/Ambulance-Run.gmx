@@ -44,6 +44,7 @@
         <object>objects\exit_1_sw</object>
       </objects>
       <object>objects\exits</object>
+      <object>objects\exits_n</object>
     </objects>
   </objects>
   <rooms name="rooms">

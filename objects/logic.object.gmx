@@ -98,35 +98,44 @@ else
     road.y += ambulance_decelerate(); // stop ambulance
 
 with(ambulance) {
-    image_angle = 0;
+    if(!ambulance_onExit())
+        image_angle = 0;
 
-    if(keyboard_check(vk_right)) {
-        if(speed_current &gt; 0) // forward
+    if(
+        keyboard_check(vk_right) &amp;&amp;
+        !ambulance_onExit()
+    ) {
+        if(speed_current &gt; 0) { // forward
             image_angle = -abs(speed_current);
-        else if(speed_current &lt; 0) // reverse
+        } else if(speed_current &lt; 0) { // reverse
             image_angle = abs(speed_current) * 2;
+        }
 
         // strafe ambulance right
         if(
             place_meeting(x + sprite_width,y,roads) ||
             place_meeting(x + sprite_width,y,exits)
         )
-            x = x + (abs(speed_current) / 2);
+            x += abs(speed_current) / 2;
 
     }
 
-    if(keyboard_check(vk_left)) {
-        if(speed_current &gt; 0) // forward
+    if(
+        keyboard_check(vk_left) &amp;&amp;
+        !ambulance_onExit()
+    ) {
+        if(speed_current &gt; 0) { // forward
             image_angle = abs(speed_current);
-        else if(speed_current &lt; 0) // reverse
+        } else if(speed_current &lt; 0) { // reverse
             image_angle = -(abs(speed_current) * 2);
+        }
 
         // strafe ambulance left
         if(
             place_meeting(x - sprite_width,y,roads) ||
             place_meeting(x - sprite_width,y,exits)
         )
-            x = x - (abs(speed_current) / 2);
+            x -= abs(speed_current) / 2;
 
     }
 

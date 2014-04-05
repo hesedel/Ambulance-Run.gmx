@@ -173,10 +173,7 @@
             <kind>1</kind>
             <string>// prevent ambulance from veering off the road to the right
 if(
-    (
-        place_meeting(x,y - (sprite_height / 2),roads) &amp;&amp;
-        place_meeting(x,y + (sprite_height / 2),roads)
-    ) &amp;&amp;
+    !ambulance_onExit() &amp;&amp;
     !place_meeting(x + sprite_width,y,roads)
 ) {
     x = instance_place(x,y,roads).x +
@@ -186,10 +183,7 @@ if(
 
 // prevent ambulance from veering off the road to the left
 if(
-    (
-        place_meeting(x,y - (sprite_height / 2),roads) &amp;&amp;
-        place_meeting(x,y + (sprite_height / 2),roads)
-    ) &amp;&amp;
+    !ambulance_onExit() &amp;&amp;
     !place_meeting(x - sprite_width,y,roads)
 ) {
     x = instance_place(x,y,roads).x +
@@ -197,18 +191,12 @@ if(
 }
 
 // exits
-if(
-    place_meeting(x,y,exits) &amp;&amp;
-    (
-        !place_meeting(x,y - (sprite_height / 2),roads) ||
-        !place_meeting(x,y + (sprite_height / 2),roads)
-    )
-) {
+if(ambulance_onExit()) {
 
     if(!place_meeting(x + sprite_width,y,exits)) {
         x_sprite = x;
         while(!place_meeting(x_sprite + sprite_width,y,exits)) {
-            x_sprite -= .01;
+            x_sprite -= .1;
         }
         x = x_sprite;
     }
@@ -216,7 +204,7 @@ if(
     if(!place_meeting(x - sprite_width,y,exits)) {
         x_sprite = x;
         while(!place_meeting(x_sprite - sprite_width,y,exits)) {
-            x_sprite += .01;
+            x_sprite += .1;
         }
         x = x_sprite;
     }
@@ -224,10 +212,41 @@ if(
 }
 
 // exit angle
-if(place_meeting(x,y,exits) &amp;&amp; y &lt; instance_place(x,y,exits_n).y + (instance_place(x,y,exits_n).sprite_height / 2)) {
-    show_debug_message('yes');
-} else
-    show_debug_message('no');
+if(place_meeting(x,y,exits)) {
+
+    if(
+        place_meeting(x,y,exits_ne) &amp;&amp;
+        y &lt; instance_place(x,y,exits_ne).y + (instance_place(x,y,exits_ne).sprite_height / 2)
+    ) {
+        percent = 1 - ((y - instance_place(x,y,exits_ne).y) / (instance_place(x,y,exits_ne).sprite_height / 2));
+        image_angle = -(percent * 90);
+    }
+
+    if(
+        place_meeting(x,y,exits_nw) &amp;&amp;
+        y &lt; instance_place(x,y,exits_nw).y + (instance_place(x,y,exits_nw).sprite_height / 2)
+    ) {
+        percent = 1 - ((y - instance_place(x,y,exits_nw).y) / (instance_place(x,y,exits_nw).sprite_height / 2));
+        image_angle = percent * 90;
+    }
+
+    if(
+        place_meeting(x,y,exits_se) &amp;&amp;
+        y &gt; instance_place(x,y,exits_se).y + (instance_place(x,y,exits_se).sprite_height / 2)
+    ) {
+        percent = ((y - instance_place(x,y,exits_se).y) / (instance_place(x,y,exits_se).sprite_height / 2)) - 1;
+        image_angle = percent * 90;
+    }
+
+    if(
+        place_meeting(x,y,exits_sw) &amp;&amp;
+        y &gt; instance_place(x,y,exits_sw).y + (instance_place(x,y,exits_sw).sprite_height / 2)
+    ) {
+        percent = ((y - instance_place(x,y,exits_sw).y) / (instance_place(x,y,exits_sw).sprite_height / 2)) - 1;
+        image_angle = -(percent * 90);
+    }
+
+}
 </string>
           </argument>
         </arguments>

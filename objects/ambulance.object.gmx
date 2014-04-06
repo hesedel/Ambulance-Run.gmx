@@ -217,7 +217,7 @@ if(ambulance_onExit()) {
 if(place_meeting(x,y,exits)) {
 
     if(
-        place_meeting(x,y,exits_ne) &amp;&amp;
+        place_meeting(x - sprite_width - 16,y,exits_ne) &amp;&amp;
         y &lt; instance_place(x,y,exits_ne).y + (instance_place(x,y,exits_ne).sprite_height / 2)
     ) {
         instance = instance_place(x,y,exits_ne);
@@ -233,7 +233,7 @@ if(place_meeting(x,y,exits)) {
     }
 
     if(
-        place_meeting(x,y,exits_nw) &amp;&amp;
+        place_meeting(x + sprite_width + 16,y,exits_nw) &amp;&amp;
         y &lt; instance_place(x,y,exits_nw).y + (instance_place(x,y,exits_nw).sprite_height / 2)
     ) {
         instance = instance_place(x,y,exits_nw);
@@ -249,7 +249,7 @@ if(place_meeting(x,y,exits)) {
     }
 
     if(
-        place_meeting(x,y,exits_se) &amp;&amp;
+        place_meeting(x - sprite_width - 16,y,exits_se) &amp;&amp;
         y &gt; instance_place(x,y,exits_se).y + (instance_place(x,y,exits_se).sprite_height / 2)
     ) {
         instance = instance_place(x,y,exits_se);
@@ -265,7 +265,7 @@ if(place_meeting(x,y,exits)) {
     }
 
     if(
-        place_meeting(x,y,exits_sw) &amp;&amp;
+        place_meeting(x + sprite_width + 16,y,exits_sw) &amp;&amp;
         y &gt; instance_place(x,y,exits_sw).y + (instance_place(x,y,exits_sw).sprite_height / 2)
     ) {
         instance = instance_place(x,y,exits_sw);

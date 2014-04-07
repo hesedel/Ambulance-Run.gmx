@@ -39,7 +39,7 @@
 y = y_init + road.y;
 
 //exits
-vehicle_exitPivot(vehicles);
+//vehicle_exitPivot(vehicles);
 
 // destroy
 if(y &gt; room_height * 2)

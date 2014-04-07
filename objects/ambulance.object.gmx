@@ -193,23 +193,42 @@ y_init = y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// prevent ambulance from veering off the road to the right
-if(
-    !ambulance_onExit() &amp;&amp;
-    !place_meeting(x + sprite_width,y,roads)
-) {
-    x = instance_place(x,y,roads).x +
-        instance_place(x,y,roads).sprite_width -
-        (sprite_width / 2);
-}
+            <string>if(!ambulance_onExit()) {
 
-// prevent ambulance from veering off the road to the left
-if(
-    !ambulance_onExit() &amp;&amp;
-    !place_meeting(x - sprite_width,y,roads)
-) {
-    x = instance_place(x,y,roads).x +
-        (sprite_width / 2);
+    // prevent ambulance from veering off the road to the right
+    if(!place_meeting(x + sprite_width,y,roads)) {
+        x = instance_place(x,y,roads).x +
+            instance_place(x,y,roads).sprite_width -
+            (sprite_width / 2);
+    }
+
+    // prevent ambulance from veering off the road to the left
+    if(!place_meeting(x - sprite_width,y,roads)) {
+        x = instance_place(x,y,roads).x +
+            (sprite_width / 2);
+    }
+
+    // exit_entrance
+    if(instance_place(x,y,exits)) {
+        if(
+            instance_place(x,y,exits_ne) ||
+            instance_place(x,y,exits_se)
+        ) {
+            exit_entrance = x -
+                instance_place(x,y,exits).x -
+                16;
+        }
+        if(
+            instance_place(x,y,exits_nw) ||
+            instance_place(x,y,exits_sw)
+        ) {
+            exit_entrance = instance_place(x,y,exits).x +
+                instance_place(x,y,exits).sprite_width -
+                x -
+                16;
+        }
+    }
+
 }
 
 // exits

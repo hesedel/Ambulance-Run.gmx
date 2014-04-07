@@ -208,7 +208,7 @@ y_init = y;
             (sprite_width / 2);
     }
 
-    // exit_entrance
+    // exit entrance
     if(instance_place(x,y,exits)) {
         if(
             instance_place(x,y,exits_ne) ||

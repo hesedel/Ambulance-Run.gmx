@@ -76,6 +76,8 @@
             <string>x_init = x;
 y_init = y;
 speed_random = random_range(speed_min,speed_max);
+
+exit_entrance = x;
 </string>
           </argument>
         </arguments>

@@ -38,7 +38,7 @@
 
 y = y_init + road.y;
 
-// exit_entrance
+// exit entrance
 if(
     !vehicle_onExit(vehicles) &amp;&amp;
     instance_place(x,y,exits)
@@ -63,7 +63,7 @@ if(
 }
 
 //exits
-//vehicle_exitPivot(vehicles);
+vehicle_exitPivot(vehicles);
 
 // destroy
 if(y &gt; room_height * 2)

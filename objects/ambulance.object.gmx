@@ -193,7 +193,7 @@ y_init = y;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(!ambulance_onExit()) {
+            <string>if(!vehicle_onExit(ambulance)) {
 
     // prevent ambulance from veering off the road to the right
     if(!place_meeting(x + sprite_width,y,roads)) {

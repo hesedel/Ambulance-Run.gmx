@@ -1,4 +1,4 @@
-with(ambulance) {
+with(argument0) {
     if(place_meeting(x,y,exits)) {
         if(
             place_meeting(x - sprite_width - 16,y,exits_ne) &&

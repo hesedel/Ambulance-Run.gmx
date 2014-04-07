@@ -98,12 +98,12 @@ else
     road.y += ambulance_decelerate(); // stop ambulance
 
 with(ambulance) {
-    if(!ambulance_onExit())
+    if(!vehicle_onExit(ambulance))
         image_angle = 0;
 
     if(
         keyboard_check(vk_right) &amp;&amp;
-        !ambulance_onExit()
+        !vehicle_onExit(ambulance)
     ) {
         if(speed_current &gt; 0) { // forward
             image_angle = -abs(speed_current);
@@ -122,7 +122,7 @@ with(ambulance) {
 
     if(
         keyboard_check(vk_left) &amp;&amp;
-        !ambulance_onExit()
+        !vehicle_onExit(ambulance)
     ) {
         if(speed_current &gt; 0) { // forward
             image_angle = abs(speed_current);

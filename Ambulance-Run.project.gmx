@@ -29,7 +29,7 @@
   <scripts name="scripts">
     <script>scripts\ambulance_accelerate.gml</script>
     <script>scripts\ambulance_decelerate.gml</script>
-    <script>scripts\ambulance_onExit.gml</script>
+    <script>scripts\vehicle_onExit.gml</script>
     <script>scripts\vehicle_exitPivot.gml</script>
   </scripts>
   <objects name="objects">

@@ -26,18 +26,20 @@
           <argument>
             <kind>1</kind>
             <string>if(!collision_line(
-    x - (sprite_width / 2),road.y + y_init - (sprite_height / 2) - speed - 16,
-    x + (sprite_width / 2),road.y + y_init - (sprite_height / 2) - speed - 16,
+    x - (sprite_width / 2),road.y + y_init - (sprite_height / 2) - speed_random - 16,
+    x + (sprite_width / 2),road.y + y_init - (sprite_height / 2) - speed_random - 16,
     vehicles,false,false
 ) &amp;&amp; !collision_line(
-    x - (sprite_width / 2),road.y + y_init - (sprite_height / 2) - speed - 16,
-    x + (sprite_width / 2),road.y + y_init - (sprite_height / 2) - speed - 16,
+    x - (sprite_width / 2),road.y + y_init - (sprite_height / 2) - speed_random - 16,
+    x + (sprite_width / 2),road.y + y_init - (sprite_height / 2) - speed_random - 16,
     ambulance,false,false
 ))
-    y_init -= speed;
+    y_init -= speed_random;
 
-x = x_init + road.x;
 y = y_init + road.y;
+
+//exits
+vehicle_exitPivot(vehicles);
 
 // destroy
 if(y &gt; room_height * 2)

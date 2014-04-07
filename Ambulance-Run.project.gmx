@@ -30,6 +30,8 @@
     <script>scripts\ambulance_accelerate.gml</script>
     <script>scripts\ambulance_decelerate.gml</script>
     <script>scripts\ambulance_onExit.gml</script>
+    <script>scripts\vehicle_exitPivot.gml</script>
+    <script>scripts\vehicle_onExitX.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\ambulance</object>

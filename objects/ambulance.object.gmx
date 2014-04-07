@@ -153,6 +153,28 @@
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>x_init = x;
+y_init = y;
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="3" enumb="0">
       <action>
@@ -191,96 +213,7 @@ if(
 }
 
 // exits
-/*
-if(ambulance_onExit()) {
-
-    if(!place_meeting(x + sprite_width,y,exits)) {
-        x_sprite = x;
-        while(!place_meeting(x_sprite + sprite_width,y,exits)) {
-            x_sprite -= .1;
-        }
-        x = x_sprite;
-    }
-
-    if(!place_meeting(x - sprite_width,y,exits)) {
-        x_sprite = x;
-        while(!place_meeting(x_sprite - sprite_width,y,exits)) {
-            x_sprite += .1;
-        }
-        x = x_sprite;
-    }
-
-}
-*/
-
-// exits
-if(place_meeting(x,y,exits)) {
-
-    if(
-        place_meeting(x - sprite_width - 16,y,exits_ne) &amp;&amp;
-        y &lt; instance_place(x,y,exits_ne).y + (instance_place(x,y,exits_ne).sprite_height / 2)
-    ) {
-        instance = instance_place(x,y,exits_ne);
-        arc_r = (instance.sprite_height / 2) - 32;
-        arc_y = y - (instance.y + 32);
-        if(arc_y &lt; 0)
-            arc_y = 0;
-        x = instance.x + 16 + 32 + (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y)));
-        
-        // angle
-        percent = 1 - (arc_y / arc_r);
-        image_angle = -(percent * 90);
-    }
-
-    if(
-        place_meeting(x + sprite_width + 16,y,exits_nw) &amp;&amp;
-        y &lt; instance_place(x,y,exits_nw).y + (instance_place(x,y,exits_nw).sprite_height / 2)
-    ) {
-        instance = instance_place(x,y,exits_nw);
-        arc_r = (instance.sprite_height / 2) - 32;
-        arc_y = y - (instance.y + 32);
-        if(arc_y &lt; 0)
-            arc_y = 0;
-        x = instance.x + instance.sprite_width - 16 - 32 - (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y)));
-
-        // angle
-        percent = 1 - (arc_y / arc_r);
-        image_angle = percent * 90;
-    }
-
-    if(
-        place_meeting(x - sprite_width - 16,y,exits_se) &amp;&amp;
-        y &gt; instance_place(x,y,exits_se).y + (instance_place(x,y,exits_se).sprite_height / 2)
-    ) {
-        instance = instance_place(x,y,exits_se);
-        arc_r = (instance.sprite_height / 2) - 32;
-        arc_y = y - (instance.y + (instance.sprite_height / 2));
-        if(arc_y &gt; abs(instance.y_init + (instance.sprite_height / 2)) - 32)
-            arc_y = abs(instance.y_init + (instance.sprite_height / 2)) - 32;
-        x = instance.x + 16 + 32 + (arc_r - sqrt(sqr(arc_r) - sqr(arc_y)));
-
-        // angle
-        percent = arc_y / arc_r;
-        image_angle = percent * 90;
-    }
-
-    if(
-        place_meeting(x + sprite_width + 16,y,exits_sw) &amp;&amp;
-        y &gt; instance_place(x,y,exits_sw).y + (instance_place(x,y,exits_sw).sprite_height / 2)
-    ) {
-        instance = instance_place(x,y,exits_sw);
-        arc_r = (instance.sprite_height / 2) - 32;
-        arc_y = y - (instance.y + (instance.sprite_height / 2));
-        if(arc_y &gt; abs(instance.y_init + (instance.sprite_height / 2)) - 32)
-            arc_y = abs(instance.y_init + (instance.sprite_height / 2)) - 32;
-        x = instance.x + instance.sprite_width - 16 - 32 - (arc_r - sqrt(sqr(arc_r) - sqr(arc_y)));
-
-        // angle
-        percent = arc_y / arc_r;
-        image_angle = -(percent * 90);
-    }
-
-}
+vehicle_exitPivot(ambulance);
 </string>
           </argument>
         </arguments>

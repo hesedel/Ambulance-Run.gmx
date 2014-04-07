@@ -75,7 +75,7 @@
             <kind>1</kind>
             <string>x_init = x;
 y_init = y;
-speed = random_range(speed_min,speed_max);
+speed_random = random_range(speed_min,speed_max);
 </string>
           </argument>
         </arguments>

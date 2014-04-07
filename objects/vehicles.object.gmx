@@ -38,6 +38,30 @@
 
 y = y_init + road.y;
 
+// exit_entrance
+if(
+    !vehicle_onExit(vehicles) &amp;&amp;
+    instance_place(x,y,exits)
+) {
+    if(
+        instance_place(x,y,exits_ne) ||
+        instance_place(x,y,exits_se)
+    ) {
+        exit_entrance = x -
+            instance_place(x,y,exits).x -
+            16;
+    }
+    if(
+        instance_place(x,y,exits_nw) ||
+        instance_place(x,y,exits_sw)
+    ) {
+        exit_entrance = instance_place(x,y,exits).x +
+            instance_place(x,y,exits).sprite_width -
+            x -
+            16;
+    }
+}
+
 //exits
 //vehicle_exitPivot(vehicles);
 

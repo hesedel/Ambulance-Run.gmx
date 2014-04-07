@@ -315,7 +315,7 @@ if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
         road_step++;
 
     // repeat level
-    if(road_step &gt; array_length_1d(global.room_step))
+    if(road_step &gt; array_height_2d(global.room_step) - 1)
         road_step = 0;
 
     r_lanes = global.room_step[road_step,0];

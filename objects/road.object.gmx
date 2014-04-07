@@ -387,11 +387,13 @@ if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
     with(road_new) {
         lane_random = irandom(road.r_lanes - 1);
         y_random = random_range(y,y + sprite_height);
+        y_random = y + (sprite_height / 2);
         with(road) {
             //road_new_x = road_new.x;
             //road_new_y = road_new.y;
             //road_new_sprite_height = road_new.sprite_height;
             vehicle_new = instance_create(road.road_new.x + 32 + (64 * road.road_new.lane_random),road.road_new.y_random,car);
+            show_debug_message(string(place_meeting(vehicle_new.x,vehicle_new.y,exits)));
             with(vehicle_new) {
                 //do {
                 //    lane_random = irandom(road.r_lanes - 1);

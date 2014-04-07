@@ -1,5 +1,8 @@
 with(argument0) {
+    percent = 0;
+show_debug_message(string(place_meeting(x,y,exits)));
     if(place_meeting(x,y,exits)) {
+        show_debug_message(string(percent));
 
         if(
             place_meeting(x - sprite_width - 16,y,exits_ne) &&
@@ -11,18 +14,8 @@ with(argument0) {
             if(arc_y < 0)
                 arc_y = 0;
 
-            // angle
             percent = 1 - (arc_y / arc_r);
-            image_angle = -(percent * 90);
-
-            x = xo + instance.x + 16 + exit_entrance + (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y)));
-            if(argument0 == ambulance)
-                y = y_init + (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y)));
-            else {
-                exit_percent = (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y))) / (instance.sprite_height / 2);
-                if(percent >= 1)
-                    exit_percent = 1;
-            }
+            show_debug_message(string(percent));
         }
 
         if(
@@ -35,18 +28,7 @@ with(argument0) {
             if(arc_y < 0)
                 arc_y = 0;
 
-            // angle
             percent = 1 - (arc_y / arc_r);
-            image_angle = percent * 90;
-
-            x = instance.x + instance.sprite_width - 16 - exit_entrance - (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y))) - xo;
-            if(argument0 == ambulance)
-                y = y_init + (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y)));
-            else {
-                exit_percent = (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y))) / (instance.sprite_height / 2);
-                if(percent >= 1)
-                    exit_percent = 1
-            }
         }
 
         if(
@@ -59,13 +41,7 @@ with(argument0) {
             if(arc_y > abs(instance.y_init + (instance.sprite_height / 2)) - exit_entrance)
                 arc_y = abs(instance.y_init + (instance.sprite_height / 2)) - exit_entrance;
 
-            // angle
             percent = arc_y / arc_r;
-            image_angle = percent * 90;
-
-            x = instance.x + 16 + exit_entrance + (arc_r - sqrt(sqr(arc_r) - sqr(arc_y)));
-            if(argument0 == ambulance)
-                y = y_init - (arc_r - sqrt(sqr(arc_r) - sqr(arc_y)));
         }
 
         if(
@@ -78,14 +54,10 @@ with(argument0) {
             if(arc_y > abs(instance.y_init + (instance.sprite_height / 2)) - exit_entrance)
                 arc_y = abs(instance.y_init + (instance.sprite_height / 2)) - exit_entrance;
 
-            // angle
             percent = arc_y / arc_r;
-            image_angle = -(percent * 90);
-
-            x = instance.x + instance.sprite_width - 16 - exit_entrance - (arc_r - sqrt(sqr(arc_r) - sqr(arc_y)));
-            if(argument0 == ambulance)
-                y = y_init - (arc_r - sqrt(sqr(arc_r) - sqr(arc_y)));
         }
 
     }
+
+    return percent;
 }

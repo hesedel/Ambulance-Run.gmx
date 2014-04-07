@@ -34,11 +34,10 @@
   </scripts>
   <objects name="objects">
     <object>objects\ambulance</object>
+    <object>objects\car</object>
     <object>objects\logic</object>
     <object>objects\road</object>
     <object>objects\roads</object>
-    <object>objects\car</object>
-    <object>objects\vehicles</object>
     <objects name="roads">
       <object>objects\road_2_lanes</object>
       <object>objects\road_3_lanes</object>
@@ -59,8 +58,10 @@
       <object>objects\exits_se</object>
       <object>objects\exits_sw</object>
     </objects>
+    <object>objects\vehicles</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\level_2</room>
     <room>rooms\level_1</room>
   </rooms>
   <help>

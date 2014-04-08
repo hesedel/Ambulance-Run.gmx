@@ -351,10 +351,12 @@ if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
             case 1:
                 with(instance_create(road_new.x,road_new.y,exit_1_nw))
                     x_init = x_init - sprite_width + 16;
+                    //x = x - sprite_width + 16
                 break;
             case 2:
                 with(instance_create(road_new.x,road_new.y,exit_2_nw))
                     x_init = x_init - sprite_width + 16;
+                    //x = x - sprite_width + 16;
                 break;
         }
     }
@@ -373,10 +375,12 @@ if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
             case 1:
                 with(instance_create(road_new.x,road_new.y,exit_1_sw))
                     x_init = x_init - sprite_width + 64 + 16;
+                    //x = x - sprite_width + 64 + 16;
                 break;
             case 2:
                 with(instance_create(road_new.x,road_new.y,exit_2_sw))
                     x_init = x_init - sprite_width + (64 * 2) + 16;
+                    //x = x - sprite_width + (64 * 2) + 16;
                 break;
         }
     }
@@ -387,21 +391,19 @@ if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
     with(road_new) {
         lane_random = irandom(road.r_lanes - 1);
         y_random = random_range(y,y + sprite_height);
-        y_random = y + (sprite_height / 2);
         with(road) {
             //road_new_x = road_new.x;
             //road_new_y = road_new.y;
             //road_new_sprite_height = road_new.sprite_height;
             vehicle_new = instance_create(road.road_new.x + 32 + (64 * road.road_new.lane_random),road.road_new.y_random,car);
-            show_debug_message(string(place_meeting(vehicle_new.x,vehicle_new.y,exits)));
-            with(vehicle_new) {
+            //with(vehicle_new) {
                 //do {
                 //    lane_random = irandom(road.r_lanes - 1);
                 //    y_random = random_range(road.road_new_y,road.road_new_y + road.road_new_sprite_height);
                 //    x = road.road_new_x + 32 + (64 * lane_random);
                 //    y = random_range(road.road_new_y,road.road_new_y + road.road_new_sprite_height);
                 //} until(!place_meeting(x,y,vehicles));
-            }
+            //}
         }
     }
 

@@ -34,7 +34,7 @@
     x + (sprite_width / 2),road.y + y_init - (sprite_height / 2) - speed_random - 16,
     ambulance,false,false
 )) {
-    //y_init -= speed_random * (1 - exit_percent);
+    y_init -= speed_random * (1 - exit_percent);
     xo += speed_random * exit_percent;
 }
 

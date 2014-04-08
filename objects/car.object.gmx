@@ -131,6 +131,56 @@ exit_entrance = x;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+
+if(
+    y &gt; room_height / 3 &amp;&amp;
+    !vehicle_onExit(vehicles) &amp;&amp;
+    (
+        x_init - 32 &lt; ambulance.x + (ambulance.sprite_width / 2) &amp;&amp;
+        x_init + 32 &gt; ambulance.x - (ambulance.sprite_width / 2)
+    )
+) {
+    if(x &gt; ambulance.x) {
+        x += (speed_random / 3);
+        if(x - x_init &gt; 16)
+            x = x_init + 16;
+    }
+    if(x &lt; ambulance.x) {
+        x -= (speed_random / 3);
+        if(x_init - x &gt;  16)
+            x = x_init - 16;
+    }
+} else {
+    if(x &gt; x_init) {
+        x -= (speed_random / 3);
+    }
+    if(x &lt; x_init) {
+        x += (speed_random / 3);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>

@@ -98,6 +98,15 @@ else
     road.y += ambulance_decelerate(); // stop ambulance
 
 with(ambulance) {
+
+    // collisions
+    if(collision_line(
+        x - (sprite_width / 2),y - (sprite_height / 2),
+        x + (sprite_width / 2),y - (sprite_height / 2),
+        vehicles,false,false)
+    )
+        speed_current = 0;
+
     if(!vehicle_onExit(ambulance))
         image_angle = 0;
 

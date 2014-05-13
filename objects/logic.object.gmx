@@ -182,6 +182,17 @@ with(ambulance) {
         speed_current = 0;
     }
 
+    // getting sirens
+    if(instance_place(x,y,siren)) {
+        with(siren) {
+            instance_destroy();
+        }
+        if(ambulance.sirens &lt; 3) {
+            ambulance.sirens++;
+        }
+        logic.score_accumulated += 1000;
+    }
+    
     if(!vehicle_onExit(ambulance))
         image_angle = 0;
 
@@ -227,7 +238,6 @@ with(ambulance) {
 
 // set score
 score_distance = floor(road.y);
-score_accumulated = 0;
 score = score_distance + score_accumulated;
 
 </string>

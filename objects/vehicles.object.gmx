@@ -69,11 +69,13 @@ vehicle_exitPivot(vehicles);
 
 // destroy
 if(
-    y &gt; room_height * 2 ||
+    //y &gt; room_height * 2 ||
     (
-        //!place_meeting(x,y,roads) &amp;&amp;
-        //!place_meeting(x,y,exits) &amp;&amp;
-        y &lt; -room_height
+        (
+            !place_meeting(x,y,roads) &amp;&amp;
+            !place_meeting(x,y,exits)
+        )// ||
+        //y &lt; -((sprite_height / 2) + (room_height / 2))
     )
 )
     instance_destroy();

@@ -181,17 +181,6 @@ with(ambulance) {
     ) {
         speed_current = 0;
     }
-
-    // getting sirens
-    if(instance_place(x,y,siren)) {
-        with(siren) {
-            instance_destroy();
-        }
-        if(ambulance.sirens &lt; 3) {
-            ambulance.sirens++;
-        }
-        logic.score_accumulated += 1000;
-    }
     
     if(!vehicle_onExit(ambulance))
         image_angle = 0;
@@ -234,6 +223,17 @@ with(ambulance) {
 
     }
 
+    // getting sirens
+    if(instance_place(x,y,siren)) {
+        with(siren) {
+            instance_destroy();
+        }
+        if(sirens &lt; 3) {
+            sirens++;
+        }
+        logic.score_accumulated += 1000;
+    }
+
 }
 
 // set score
@@ -273,6 +273,33 @@ draw_text((room_width * (2 / 3)), (16 * 3), 'Sirens: ' + string(ambulance.sirens
 draw_text((room_width * (2 / 3)), (16 * 4), 'Press [SPACEBAR]');
 draw_text((room_width * (2 / 3)), (16 * 5), 'to activate a Siren.');
 draw_set_color(make_color_rgb(0, 0, 0));
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="32">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(ambulance.sirens &gt; 0 &amp;&amp; ambulance.siren_timeout == 0) {
+    ambulance.sirens--;
+    ambulance.siren_timeout = 60 * 10;
+}
 
 </string>
           </argument>

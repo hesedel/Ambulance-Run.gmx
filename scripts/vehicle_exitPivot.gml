@@ -51,6 +51,7 @@ if(place_meeting(x,y,exits)) {
     }
 
     if(
+        argument0 == ambulance &&
         place_meeting(x - sprite_width - 16,y,exits_se) &&
         y > instance_place(x,y,exits_se).y + (instance_place(x,y,exits_se).sprite_height / 2)
     ) {
@@ -71,6 +72,7 @@ if(place_meeting(x,y,exits)) {
     }
 
     if(
+        argument0 == ambulance &&
         place_meeting(x + sprite_width + 16,y,exits_sw) &&
         y > instance_place(x,y,exits_sw).y + (instance_place(x,y,exits_sw).sprite_height / 2)
     ) {

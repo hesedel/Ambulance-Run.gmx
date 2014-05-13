@@ -225,7 +225,7 @@ with(ambulance) {
 
     // getting sirens
     if(instance_place(x,y,siren)) {
-        with(siren) {
+        with(instance_place(x,y,siren)) {
             instance_destroy();
         }
         if(sirens &lt; 3) {

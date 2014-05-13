@@ -73,12 +73,15 @@ if(
     (
         (
             !place_meeting(x,y,roads) &amp;&amp;
-            !place_meeting(x,y,exits)
+            !place_meeting(x,y,exits) &amp;&amp;
+            y &gt; -(sprite_height / 2)
         )// ||
         //y &lt; -((sprite_height / 2) + (room_height / 2))
     )
-)
+) {
     instance_destroy();
+}
+
 </string>
           </argument>
         </arguments>

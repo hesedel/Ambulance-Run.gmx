@@ -151,6 +151,7 @@ exit_entrance = x;
             <string>event_inherited();
 
 if(
+    //false &amp;&amp;
     y &gt; room_height / 3 &amp;&amp;
     !vehicle_onExit(vehicles) &amp;&amp;
     (

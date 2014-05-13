@@ -11,29 +11,73 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
-        <id>201</id>
-        <kind>0</kind>
+        <id>611</id>
+        <kind>6</kind>
         <userelative>-1</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_create_object</functionname>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>10</kind>
-            <object>ambulance</object>
+            <kind>1</kind>
+            <string>score_distance</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>224</string>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>score_accumulated</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>416</string>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>score</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -62,6 +106,34 @@
           <argument>
             <kind>0</kind>
             <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>201</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_create_object</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>10</kind>
+            <object>ambulance</object>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>224</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>416</string>
           </argument>
         </arguments>
       </action>
@@ -100,12 +172,15 @@ else
 with(ambulance) {
 
     // collisions
-    if(collision_line(
-        x - (sprite_width / 2),y - (sprite_height / 2),
-        x + (sprite_width / 2),y - (sprite_height / 2),
-        vehicles,false,false)
-    )
+    if(
+        collision_line(
+            x - (sprite_width / 2),y - (sprite_height / 2),
+            x + (sprite_width / 2),y - (sprite_height / 2),
+            vehicles,false,false
+        )
+    ) {
         speed_current = 0;
+    }
 
     if(!vehicle_onExit(ambulance))
         image_angle = 0;
@@ -149,6 +224,46 @@ with(ambulance) {
     }
 
 }
+
+// set score
+score_distance = floor(road.y);
+score_accumulated = 0;
+score = score_distance + score_accumulated;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// draw score
+draw_set_color(make_color_rgb(0, 0, 0));
+draw_set_alpha(.75);
+draw_rectangle((room_width * (5 / 8)), 0, room_width, room_height, false);
+draw_set_color(make_color_rgb(255, 255, 255));
+draw_set_alpha(1);
+draw_text((room_width * (2 / 3)), (16 * 1), 'Score: ' + string(score));
+draw_text((room_width * (2 / 3)), (16 * 3), 'Sirens: ' + string(ambulance.sirens));
+draw_text((room_width * (2 / 3)), (16 * 4), 'Press [SPACEBAR]');
+draw_text((room_width * (2 / 3)), (16 * 5), 'to activate a Siren.');
+draw_set_color(make_color_rgb(0, 0, 0));
+
 </string>
           </argument>
         </arguments>

@@ -71,9 +71,9 @@ vehicle_exitPivot(vehicles);
 if(
     y &gt; room_height * 2 ||
     (
-        !place_meeting(x,y,roads) &amp;&amp;
-        !place_meeting(x,y,exits) &amp;&amp;
-        y &gt; -(room_height / 2)
+        //!place_meeting(x,y,roads) &amp;&amp;
+        //!place_meeting(x,y,exits) &amp;&amp;
+        y &lt; -room_height
     )
 )
     instance_destroy();

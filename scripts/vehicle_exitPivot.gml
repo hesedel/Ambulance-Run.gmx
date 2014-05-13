@@ -15,9 +15,10 @@ if(place_meeting(x,y,exits)) {
         image_angle = -(percent * 90);
 
         x = xo + instance.x + 16 + exit_entrance + (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y)));
-        if(argument0 == ambulance)
-            y = y_init + (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y)));
-        else {
+        if(argument0 == ambulance) {
+            if(percent < .7)
+                y = y_init + (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y)));
+        } else {
             exit_percent = (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y))) / (instance.sprite_height / 2);
             if(percent >= 1)
                 exit_percent = 1;
@@ -39,9 +40,10 @@ if(place_meeting(x,y,exits)) {
         image_angle = percent * 90;
 
         x = instance.x + instance.sprite_width - 16 - exit_entrance - (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y))) - xo;
-        if(argument0 == ambulance)
-            y = y_init + (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y)));
-        else {
+        if(argument0 == ambulance) {
+            if(percent < .7)
+                y = y_init + (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y)));
+        } else {
             exit_percent = (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y))) / (instance.sprite_height / 2);
             if(percent >= 1)
                 exit_percent = 1
@@ -63,8 +65,9 @@ if(place_meeting(x,y,exits)) {
         image_angle = percent * 90;
 
         x = instance.x + 16 + exit_entrance + (arc_r - sqrt(sqr(arc_r) - sqr(arc_y)));
-        if(argument0 == ambulance)
+        if(argument0 == ambulance) {
             y = y_init - (arc_r - sqrt(sqr(arc_r) - sqr(arc_y)));
+        }
     }
 
     if(
@@ -82,8 +85,9 @@ if(place_meeting(x,y,exits)) {
         image_angle = -(percent * 90);
 
         x = instance.x + instance.sprite_width - 16 - exit_entrance - (arc_r - sqrt(sqr(arc_r) - sqr(arc_y)));
-        if(argument0 == ambulance)
+        if(argument0 == ambulance) {
             y = y_init - (arc_r - sqrt(sqr(arc_r) - sqr(arc_y)));
+        }
     }
 
 }

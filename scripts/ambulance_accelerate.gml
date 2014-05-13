@@ -1,6 +1,10 @@
 if(keyboard_check(vk_up)) {
-    if(keyboard_check(vk_lshift) && ambulance.speed_current < ambulance.speed_max * 1.5)
-        ambulance.speed_current += ambulance.acceleration * 2;
+    if(keyboard_check(vk_lshift)) {
+        if(ambulance.speed_current < ambulance.speed_max_2)
+            ambulance.speed_current += ambulance.acceleration * 2;
+        else
+            ambulance.speed_current += ambulance.acceleration_2;
+    }
     else if(ambulance.speed_current < ambulance.speed_max)
         ambulance.speed_current += ambulance.acceleration;
     else if(ambulance.speed_current > ambulance.speed_max)

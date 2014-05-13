@@ -23,6 +23,7 @@
         <sprite>sprites\sprite_exit_2_sw</sprite>
       </sprites>
     </sprites>
+    <sprite>sprites\sprite_siren</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -59,10 +60,10 @@
       <object>objects\exits_sw</object>
     </objects>
     <object>objects\vehicles</object>
+    <object>objects\siren</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\level_1</room>
-    <room>rooms\level_2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

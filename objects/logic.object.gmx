@@ -122,7 +122,8 @@
           <argument>
             <kind>1</kind>
             <string>started = false;
-patient_life_initial = ((32 * (room_height / 2)) / 5) + (60 * 10); // + 10 seconds
+patient_life_initial = ((32 * (room_height / 2)) / 5);
+patient_life_initial += (60 * 10); // + 10 seconds
 patient_life = patient_life_initial;
 
 </string>
@@ -221,6 +222,7 @@ with(ambulance) {
 
     // collisions
     if(
+        siren_timeout == 0 &amp;&amp;
         collision_line(
             x - (sprite_width / 2),y - (sprite_height / 2),
             x + (sprite_width / 2),y - (sprite_height / 2),

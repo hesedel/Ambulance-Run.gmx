@@ -408,7 +408,7 @@ if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
         }
     }
 
-    // load Siren
+    // load siren
     if(global.room_step[road_step,3] == 1) {
         with(road_new) {
             lane_random = irandom(road.r_lanes - 1);
@@ -419,7 +419,20 @@ if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
             }
         }
     }
-    
+
+    // load patient
+    if(global.room_step[road_step,3] == 3) {
+        show_debug_message('true');
+        with(road_new) {
+            lane_random = irandom(road.r_lanes - 1);
+            //y_random = random_range(y,y + sprite_height);
+            y_random = y + (sprite_height / 2);
+            with(road) {
+                instance_create(road.road_new.x + 32 + (64 * road.road_new.lane_random),road.road_new.y_random,patient);
+            }
+        }
+    }
+
     if(road_repeat == 0)
         road_repeat = r_repeat;
     road_repeat--;

@@ -234,6 +234,14 @@ with(ambulance) {
         logic.score_accumulated += 1000;
     }
 
+    // getting patients
+    if(instance_place(x,y,patient)) {
+        with(instance_place(x,y,patient)) {
+            instance_destroy();
+        }
+        logic.score_accumulated += 10000;
+    }
+
 }
 
 // set score

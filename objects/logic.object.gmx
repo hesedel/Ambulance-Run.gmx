@@ -83,6 +83,54 @@
       </action>
       <action>
         <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>level</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>1</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>started = false;
+patient_life_initial = ((32 * (room_height / 2)) / 5) + (60 * 10); // + 10 seconds
+patient_life = patient_life_initial;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>201</id>
         <kind>0</kind>
         <userelative>-1</userelative>
@@ -234,12 +282,20 @@ with(ambulance) {
         logic.score_accumulated += 1000;
     }
 
+    // killing patients
+    if(logic.started)
+        logic.patient_life--;
+    
     // getting patients
     if(instance_place(x,y,patient)) {
         with(instance_place(x,y,patient)) {
             instance_destroy();
         }
         logic.score_accumulated += 10000;
+        logic.level++;
+        logic.patient_life_initial = logic.patient_life + ((32 * (room_height / 2)) / (ambulance.speed_max + ((logic.level - 1) / 2)));
+        logic.patient_life_initial += (60 * 5); // + 5 seconds
+        logic.patient_life = logic.patient_life_initial;
     }
 
 }
@@ -273,14 +329,57 @@ score = score_distance + score_accumulated;
             <string>// draw score
 draw_set_color(make_color_rgb(0, 0, 0));
 draw_set_alpha(.75);
+
 draw_rectangle((room_width * (5 / 8)), 0, room_width, room_height, false);
+
 draw_set_color(make_color_rgb(255, 255, 255));
 draw_set_alpha(1);
+
 draw_text((room_width * (2 / 3)), (16 * 1), 'Score: ' + string(score));
-draw_text((room_width * (2 / 3)), (16 * 3), 'Sirens: ' + string(ambulance.sirens));
-draw_text((room_width * (2 / 3)), (16 * 4), 'Press [SPACEBAR]');
-draw_text((room_width * (2 / 3)), (16 * 5), 'to activate a Siren.');
+draw_text((room_width * (2 / 3)), (16 * 3), 'Patient Life:');
+
+draw_set_color(make_color_rgb(255, 0, 0));
+
+draw_text((room_width * (2 / 3)), (16 * 4), string(ceil(logic.patient_life / logic.patient_life_initial * 100)));
+
+draw_set_color(make_color_rgb(255, 255, 255));
+
+draw_text((room_width * (2 / 3)), (16 * 6), 'Sirens:');
+
+draw_set_color(make_color_rgb(0, 255, 0));
+
+draw_text((room_width * (2 / 3)), (16 * 7), string(ambulance.sirens));
+
+draw_set_color(make_color_rgb(255, 255, 255));
+
+draw_text((room_width * (2 / 3)), (16 * 9), 'Press [SPACEBAR]');
+draw_text((room_width * (2 / 3)), (16 * 10), 'to activate a Siren.');
+draw_text((room_width * (2 / 3)), (16 * 27), 'Level: ' + string(level));
 draw_set_color(make_color_rgb(0, 0, 0));
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="38">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>started = true;
 
 </string>
           </argument>

@@ -390,8 +390,8 @@ if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
     // load vehicle
     with(road_new) {
         lane_random = irandom(road.r_lanes - 1);
-        //y_random = random_range(y,y + sprite_height);
-        y_random = y + (sprite_height / 2);
+        y_random = random_range(y + (sprite_height * (1 / 3)),y + (sprite_height * (2 / 3)));
+        //y_random = y + (sprite_height / 2);
         with(road) {
             //road_new_x = road_new.x;
             //road_new_y = road_new.y;
@@ -421,8 +421,7 @@ if(step &gt; step_previous &amp;&amp; step &gt; step_current) {
     }
 
     // load patient
-    if(global.room_step[road_step,3] == 3) {
-        show_debug_message('true');
+    if(step % 32 == 0) {
         with(road_new) {
             lane_random = irandom(road.r_lanes - 1);
             //y_random = random_range(y,y + sprite_height);

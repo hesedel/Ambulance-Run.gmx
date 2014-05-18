@@ -65,8 +65,8 @@
     <object>objects\patient</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\level_test</room>
     <room>rooms\level_1</room>
+    <room>rooms\level_test</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

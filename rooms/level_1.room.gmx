@@ -13,7 +13,7 @@
   <code>global.room_step[0,0] = 3; // lanes
 global.room_step[0,1] = 2; // column
 global.room_step[0,2] = 5; // repeat
-global.room_step[0,3] = 0; // has [0=nothing, 1=Siren, 2=Wrench, 3=Patient]
+global.room_step[0,3] = 0; // has [0=nothing, 1=Siren, 2=Wrench]
 
 global.room_step[1,0] = 3; // lanes
 global.room_step[1,1] = 1; // column
@@ -213,7 +213,7 @@ global.room_step[39,3] = 0;
 global.room_step[40,0] = 4; // lanes
 global.room_step[40,1] = 0; // column
 global.room_step[40,2] = 5; // repeat
-global.room_step[40,3] = 1; // has [0=nothing, 1=Siren, 2=Wrench, 3=Patient]
+global.room_step[40,3] = 1;
 
 global.room_step[41,0] = 3; // lanes
 global.room_step[41,1] = 1; // column
@@ -409,7 +409,7 @@ global.room_step[78,3] = 0;
 global.room_step[79,0] = 3; // lanes
 global.room_step[79,1] = 1; // column
 global.room_step[79,2] = 5; // repeat
-global.room_step[79,3] = 1; // has [0=nothing, 1=Siren, 2=Wrench, 3=Patient]
+global.room_step[79,3] = 1;
 
 global.room_step[80,0] = 4; // lanes
 global.room_step[80,1] = 1; // column
@@ -618,13 +618,8 @@ global.room_step[120,3] = 0;
 
 global.room_step[121,0] = 4; // lanes
 global.room_step[121,1] = 1; // column
-global.room_step[121,2] = 4; // repeat
-global.room_step[121,3] = 0;
-
-global.room_step[122,0] = 4; // lanes
-global.room_step[122,1] = 1; // column
-global.room_step[122,2] = 1; // repeat
-global.room_step[122,3] = 3;</code>
+global.room_step[121,2] = 5; // repeat
+global.room_step[121,3] = 0;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <makerSettings>

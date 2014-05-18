@@ -285,7 +285,9 @@ with(ambulance) {
     // killing patients
     if(logic.started)
         logic.patient_life--;
-    
+    if(logic.patient_life &lt;= 0)
+        gameover('A patient died!');
+
     // getting patients
     if(instance_place(x,y,patient)) {
         with(instance_place(x,y,patient)) {
@@ -294,7 +296,7 @@ with(ambulance) {
         logic.score_accumulated += 10000;
         logic.level++;
         logic.patient_life_initial = logic.patient_life + ((32 * (room_height / 2)) / (ambulance.speed_max + ((logic.level - 1) / 2)));
-        logic.patient_life_initial += (60 * 5); // + 5 seconds
+        logic.patient_life_initial += (60 * 1); // + 1 seconds
         logic.patient_life = logic.patient_life_initial;
     }
 
@@ -326,35 +328,42 @@ score = score_distance + score_accumulated;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// draw score
+            <string>x = (room_width * (5 / 8)) + 16;
+
+// draw score
 draw_set_color(make_color_rgb(0, 0, 0));
 draw_set_alpha(.75);
 
-draw_rectangle((room_width * (5 / 8)), 0, room_width, room_height, false);
+draw_rectangle(room_width * (5 / 8), 0, room_width, room_height, false);
 
 draw_set_color(make_color_rgb(255, 255, 255));
 draw_set_alpha(1);
 
-draw_text((room_width * (2 / 3)), (16 * 1), 'Score: ' + string(score));
-draw_text((room_width * (2 / 3)), (16 * 3), 'Patient Life:');
+draw_text(x, (16 * 1), 'Score: ' + string(score));
+draw_text(x, (16 * 3), "Patient's Life:");
 
 draw_set_color(make_color_rgb(255, 0, 0));
 
-draw_text((room_width * (2 / 3)), (16 * 4), string(ceil(logic.patient_life / logic.patient_life_initial * 100)));
+//draw_text((room_width * (2 / 3)), (16 * 4), string(ceil(logic.patient_life / logic.patient_life_initial * 100)));
+draw_rectangle(
+    x, (16 * 4),
+    x + ((room_width - 16 - x) * (logic.patient_life / logic.patient_life_initial)), (16 * 5),
+    false
+);
 
 draw_set_color(make_color_rgb(255, 255, 255));
 
-draw_text((room_width * (2 / 3)), (16 * 6), 'Sirens:');
+draw_text(x, (16 * 6), 'Sirens:');
 
 draw_set_color(make_color_rgb(0, 255, 0));
 
-draw_text((room_width * (2 / 3)), (16 * 7), string(ambulance.sirens));
+draw_text(x, (16 * 7), string(ambulance.sirens));
 
 draw_set_color(make_color_rgb(255, 255, 255));
 
-draw_text((room_width * (2 / 3)), (16 * 9), 'Press [SPACEBAR]');
-draw_text((room_width * (2 / 3)), (16 * 10), 'to activate a Siren.');
-draw_text((room_width * (2 / 3)), (16 * 27), 'Level: ' + string(level));
+draw_text(x, (16 * 9), 'Press [SPACEBAR]');
+draw_text(x, (16 * 10), 'to activate a Siren.');
+draw_text(x, (16 * 27), 'Level: ' + string(level));
 draw_set_color(make_color_rgb(0, 0, 0));
 
 </string>

@@ -33,6 +33,7 @@
     <script>scripts\ambulance_decelerate.gml</script>
     <script>scripts\vehicle_onExit.gml</script>
     <script>scripts\vehicle_exitPivot.gml</script>
+    <script>scripts\gameover.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\ambulance</object>

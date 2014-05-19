@@ -8,7 +8,7 @@
   <isometric>0</isometric>
   <speed>60</speed>
   <persistent>0</persistent>
-  <colour>7457838</colour>
+  <colour>6336039</colour>
   <showcolour>-1</showcolour>
   <code>global.room_step[0,0] = 3; // lanes
 global.room_step[0,1] = 2; // column

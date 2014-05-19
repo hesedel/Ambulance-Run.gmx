@@ -187,6 +187,38 @@ patient_life = patient_life_initial;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// killing player
+if(ambulance.health_current &lt;= 0) {
+    gameover('The ambulance is destroyed!');
+}
+
+// killing patients
+if(logic.patient_life &lt;= 0) {
+    gameover('A patient died!');
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -236,7 +268,7 @@ with(ambulance) {
     // killing player
     if(health_current &lt;= 0) {
         health_current = 0;
-        gameover('The ambulance is destroyed!');
+        //gameover('The ambulance is destroyed!');
     }
     
     if(!vehicle_onExit(ambulance))
@@ -294,8 +326,10 @@ with(ambulance) {
     // killing patients
     if(logic.started)
         logic.patient_life--;
-    if(logic.patient_life &lt;= 0)
-        gameover('A patient died!');
+    if(logic.patient_life &lt;= 0) {
+        logic.patient_life = 0;
+        //gameover('A patient died!');
+    }
 
     // getting patients
     if(instance_place(x,y,patient)) {

@@ -29,7 +29,7 @@
           </argument>
           <argument>
             <kind>0</kind>
-            <string>.04</string>
+            <string>.03</string>
           </argument>
         </arguments>
       </action>
@@ -121,11 +121,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed_current</string>
+            <string>speed_max</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>0</string>
+            <string>5</string>
           </argument>
         </arguments>
       </action>
@@ -145,11 +145,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed_max</string>
+            <string>speed_current</string>
           </argument>
           <argument>
             <kind>0</kind>
-            <string>5</string>
+            <string>0</string>
           </argument>
         </arguments>
       </action>
@@ -267,6 +267,10 @@
             <kind>1</kind>
             <string>x_init = x;
 y_init = y;
+
+health_max = speed_max + (((logic.level * 10) - 1) / 2); // level 10 will cause instant death
+health_current = health_max;
+
 </string>
           </argument>
         </arguments>

@@ -229,7 +229,14 @@ with(ambulance) {
             vehicles,false,false
         )
     ) {
+        health_current -= speed_current * (logic.level / 10);
         speed_current = 0;
+    }
+    
+    // killing player
+    if(health_current &lt;= 0) {
+        health_current = 0;
+        gameover('The ambulance is destroyed!');
     }
     
     if(!vehicle_onExit(ambulance))
@@ -342,9 +349,9 @@ draw_set_color(make_color_rgb(255, 255, 255));
 draw_set_alpha(1);
 
 draw_text(x, (16 * 1), 'Score: ' + string(score));
-draw_text(x, (16 * 3), "Patient's Life:");
+draw_text(x, (16 * 3), 'Patient Life');
 
-draw_set_color(make_color_rgb(255, 0, 0));
+draw_set_color(make_color_rgb(231, 76, 60));
 
 //draw_text((room_width * (2 / 3)), (16 * 4), string(ceil(logic.patient_life / logic.patient_life_initial * 100)));
 draw_rectangle(
@@ -355,16 +362,28 @@ draw_rectangle(
 
 draw_set_color(make_color_rgb(255, 255, 255));
 
-draw_text(x, (16 * 6), 'Sirens:');
+draw_text(x, (16 * 6), 'Ambulance Health:');
 
-draw_set_color(make_color_rgb(0, 255, 0));
+draw_set_color(make_color_rgb(52, 152, 219));
 
-draw_text(x, (16 * 7), string(ambulance.sirens));
+draw_rectangle(
+    x, (16 * 7),
+    x + ((room_width - 16 - x) * (ambulance.health_current / ambulance.health_max)), (16 * 8),
+    false
+);
 
 draw_set_color(make_color_rgb(255, 255, 255));
 
-draw_text(x, (16 * 9), 'Press [SPACEBAR]');
-draw_text(x, (16 * 10), 'to activate a Siren.');
+draw_text(x, (16 * 9), 'Sirens:');
+
+draw_set_color(make_color_rgb(46, 204, 113));
+
+draw_text(x, (16 * 10), string(ambulance.sirens));
+
+draw_set_color(make_color_rgb(255, 255, 255));
+
+draw_text(x, (16 * 12), 'Press [SPACEBAR]');
+draw_text(x, (16 * 13), 'to activate a Siren.');
 draw_text(x, (16 * 27), 'Level: ' + string(level));
 draw_set_color(make_color_rgb(0, 0, 0));
 

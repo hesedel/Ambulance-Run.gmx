@@ -38,6 +38,11 @@
     <script>scripts\vehicle_exitPivot.gml</script>
     <script>scripts\gameover.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\font_level_up</font>
+    <font>fonts\font_default</font>
+    <font>fonts\font_title</font>
+  </fonts>
   <objects name="objects">
     <object>objects\ambulance</object>
     <object>objects\car</object>

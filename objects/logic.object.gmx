@@ -107,6 +107,30 @@
       </action>
       <action>
         <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>level_timeout</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>603</id>
         <kind>7</kind>
         <userelative>0</userelative>
@@ -341,7 +365,9 @@ with(ambulance) {
         logic.patient_life_initial = logic.patient_life + ((32 * (room_height / 2)) / (ambulance.speed_max + ((logic.level - 1) / 2)));
         logic.patient_life_initial += (60 * 1); // + 1 seconds
         logic.patient_life = logic.patient_life_initial;
+        logic.level_timeout = 60 * 6; // 6 seconds
     }
+    logic.level_timeout--;
 
 }
 
@@ -373,7 +399,26 @@ score = score_distance + score_accumulated;
             <kind>1</kind>
             <string>x = (room_width * (5 / 8)) + 16;
 
-// draw score
+if(!started) {
+    draw_set_color(make_color_rgb(255, 255, 255));
+    draw_set_alpha(.75);
+    draw_rectangle(1, 1, x - 18, room_height - 2, false);
+    draw_set_color(make_color_rgb(0, 0, 0));
+    draw_set_halign(fa_center);
+    draw_set_alpha(1);
+    draw_text(room_width * (2.5 / 8), 16 * 3, 'Welcome to');
+    draw_set_font(font_title);
+    draw_text(room_width * (2.5 / 8), 16 * 4, 'Ambulance Run!');
+    draw_set_font(font_default);
+    draw_text(room_width * (2.5 / 8), 16 * 6, '(The Videogame)');
+    draw_text(room_width * (2.5 / 8), 16 * 8, 'Rescue the patients');
+    draw_text(room_width * (2.5 / 8), 16 * 9, 'before their health runs out');
+    draw_text(room_width * (2.5 / 8), 16 * 10, 'and they die!');
+    draw_text(room_width * (2.5 / 8), 16 * 12, 'Hold the [UP ARROW] key');
+    draw_text(room_width * (2.5 / 8), 16 * 13, 'to move forward and start the game!');
+    draw_set_halign(fa_left);
+}
+
 draw_set_color(make_color_rgb(0, 0, 0));
 draw_set_alpha(.75);
 
@@ -382,13 +427,16 @@ draw_rectangle(room_width * (5 / 8), 0, room_width, room_height, false);
 draw_set_color(make_color_rgb(255, 255, 255));
 draw_set_alpha(1);
 
+// draw score
 draw_text(x, (16 * 1), 'Score: ' + string(score));
 draw_sprite(sprite_patient, image_index, x + (sprite_get_width(sprite_patient) / 2), (16 * 3) + (sprite_get_height(sprite_patient) / 2));
-draw_text(x + 32, (16 * 3), 'Patient Life');
+
+// draw patient health
+draw_text(x + 32, (16 * 3), 'Patient Health');
 
 draw_set_color(make_color_rgb(231, 76, 60));
 
-//draw_text((room_width * (2 / 3)), (16 * 4), string(ceil(logic.patient_life / logic.patient_life_initial * 100)));
+// draw_text((room_width * (2 / 3)), (16 * 4), string(ceil(logic.patient_life / logic.patient_life_initial * 100)));
 draw_rectangle(
     x + 32, (16 * 4),
     x + 32 + ((room_width - 48 - x) * (logic.patient_life / logic.patient_life_initial)), (16 * 5),
@@ -397,6 +445,7 @@ draw_rectangle(
 
 draw_set_color(make_color_rgb(255, 255, 255));
 
+// draw ambulance health
 draw_text(x, (16 * 6), 'Ambulance Health:');
 
 draw_set_color(make_color_rgb(52, 152, 219));
@@ -409,6 +458,7 @@ draw_rectangle(
 
 draw_set_color(make_color_rgb(255, 255, 255));
 
+// draw sirens
 draw_text(x, (16 * 9), 'Sirens:');
 
 draw_set_color(make_color_rgb(46, 204, 113));
@@ -425,8 +475,31 @@ draw_set_color(make_color_rgb(255, 255, 255));
 
 draw_text(x, (16 * 12), 'Press [SPACEBAR]');
 draw_text(x, (16 * 13), 'to activate a Siren.');
+
+// draw level
 draw_text(x, (16 * 27), 'Level: ' + string(level));
+
+if(logic.level_timeout &gt; 0 &amp;&amp; logic.level_timeout &lt; 60 * 5) {
+    draw_set_color(make_color_rgb(255, 255, 255));
+    draw_set_alpha(.75);
+    draw_rectangle(
+        1, 1,
+        x - 18, (16 * 3) - 2,
+        false
+    );
+    draw_set_font(font_level_up);
+    draw_set_color(make_color_rgb(0, 0, 0));
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_set_alpha(1);
+    draw_text(room_width * (2.5 / 8), 24, 'Level ' + string(level));
+}
+
 draw_set_color(make_color_rgb(0, 0, 0));
+draw_set_font(font_default);
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+draw_set_alpha(1);
 
 </string>
           </argument>
@@ -478,6 +551,32 @@ draw_set_color(make_color_rgb(0, 0, 0));
     ambulance.sirens--;
     ambulance.siren_timeout = 60 * 10;
     audio_play_sound(sound_ambulance_siren, 0, true);
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(show_question('Do you want to restart the game?')) {
+    room = level_1;
 }
 
 </string>

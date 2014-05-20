@@ -383,14 +383,15 @@ draw_set_color(make_color_rgb(255, 255, 255));
 draw_set_alpha(1);
 
 draw_text(x, (16 * 1), 'Score: ' + string(score));
-draw_text(x, (16 * 3), 'Patient Life');
+draw_sprite(sprite_patient, image_index, x + (sprite_get_width(sprite_patient) / 2), (16 * 3) + (sprite_get_height(sprite_patient) / 2));
+draw_text(x + 32, (16 * 3), 'Patient Life');
 
 draw_set_color(make_color_rgb(231, 76, 60));
 
 //draw_text((room_width * (2 / 3)), (16 * 4), string(ceil(logic.patient_life / logic.patient_life_initial * 100)));
 draw_rectangle(
-    x, (16 * 4),
-    x + ((room_width - 16 - x) * (logic.patient_life / logic.patient_life_initial)), (16 * 5),
+    x + 32, (16 * 4),
+    x + 32 + ((room_width - 48 - x) * (logic.patient_life / logic.patient_life_initial)), (16 * 5),
     false
 );
 
@@ -412,7 +413,13 @@ draw_text(x, (16 * 9), 'Sirens:');
 
 draw_set_color(make_color_rgb(46, 204, 113));
 
-draw_text(x, (16 * 10), string(ambulance.sirens));
+//draw_text(x, (16 * 10), string(ambulance.sirens));
+for(i = 0; i &lt; ambulance.sirens; i++) {
+    draw_sprite(sprite_siren, image_index,
+        x + (sprite_get_width(sprite_siren) / 2) + (32 * i),
+        (16 * 10) + (sprite_get_height(sprite_siren) / 2)
+    );
+}
 
 draw_set_color(make_color_rgb(255, 255, 255));
 
@@ -470,6 +477,7 @@ draw_set_color(make_color_rgb(0, 0, 0));
             <string>if(ambulance.sirens &gt; 0 &amp;&amp; ambulance.siren_timeout == 0) {
     ambulance.sirens--;
     ambulance.siren_timeout = 60 * 10;
+    audio_play_sound(sound_ambulance_siren, 0, true);
 }
 
 </string>

@@ -20,6 +20,5 @@
   <height>64</height>
   <frames>
     <frame index="0">images\sprite_ambulance_0.png</frame>
-    <frame index="1">images\sprite_ambulance_1.png</frame>
   </frames>
 </sprite>

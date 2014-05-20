@@ -271,6 +271,8 @@ y_init = y;
 health_max = speed_max + (((logic.level * 10) - 1) / 2); // level 10 will cause instant death
 health_current = health_max;
 
+image_speed = .25;
+
 </string>
           </argument>
         </arguments>
@@ -335,8 +337,23 @@ health_current = health_max;
 vehicle_exitPivot(ambulance);
 
 // turning siren off
-if(siren_timeout &gt; 0)
+if(siren_timeout &gt; 0) {
     siren_timeout--;
+} else {
+    if(audio_is_playing(sound_ambulance_siren)) {
+        audio_stop_sound(sound_ambulance_siren);
+    }
+}
+
+// sprites
+if(speed_current == 0) {
+    if(sprite_index != sprite_ambulance)
+        sprite_index = sprite_ambulance
+} else {
+    if(sprite_index != sprite_ambulance_moving)
+        sprite_index = sprite_ambulance_moving
+}
+
 
 </string>
           </argument>

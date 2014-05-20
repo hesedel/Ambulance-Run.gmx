@@ -18,7 +18,7 @@ if(place_meeting(x,y,exits)) {
         if(argument0 == ambulance) {
             if(percent < .7)
                 y = y_init + (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y)));
-            else
+            else if(percent >= 1)
                 gameover('You got lost!');
         } else {
             exit_percent = (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y))) / (instance.sprite_height / 2);
@@ -45,7 +45,7 @@ if(place_meeting(x,y,exits)) {
         if(argument0 == ambulance) {
             if(percent < .7)
                 y = y_init + (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y)));
-            else
+            else if(percent >= 1)
                 gameover('You got lost!');
         } else {
             exit_percent = (arc_r - sqrt(sqr(arc_r) - sqr(arc_r - arc_y))) / (instance.sprite_height / 2);

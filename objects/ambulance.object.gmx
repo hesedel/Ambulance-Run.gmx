@@ -347,11 +347,19 @@ if(siren_timeout &gt; 0) {
 
 // sprites
 if(speed_current == 0) {
-    if(sprite_index != sprite_ambulance)
-        sprite_index = sprite_ambulance
+    if(sprite_index != sprite_ambulance) {
+        sprite_index = sprite_ambulance;
+    }
 } else {
-    if(sprite_index != sprite_ambulance_moving)
-        sprite_index = sprite_ambulance_moving
+    if(siren_timeout == 0) {
+        if(sprite_index != sprite_ambulance_moving) {
+            sprite_index = sprite_ambulance_moving;
+        }
+    } else {
+        if(sprite_index != sprite_ambulance_moving_siren) {
+            sprite_index = sprite_ambulance_moving_siren;
+        }
+    }
 }
 
 

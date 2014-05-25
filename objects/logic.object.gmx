@@ -287,6 +287,7 @@ with(ambulance) {
     ) {
         health_current -= speed_current * (logic.level / 10);
         speed_current = 0;
+        audio_play_sound(sound_bump, 0, false);
     }
     
     // killing player
@@ -345,6 +346,7 @@ with(ambulance) {
             sirens++;
         }
         logic.score_accumulated += 1000;
+        audio_play_sound(sound_siren_pickup, 0, false);
     }
 
     // killing patients
@@ -366,6 +368,7 @@ with(ambulance) {
         logic.patient_life_initial += (60 * 1); // + 1 seconds
         logic.patient_life = logic.patient_life_initial;
         logic.level_timeout = 60 * 6; // 6 seconds
+        audio_play_sound(sound_patient_pickup, 0, false);
     }
     logic.level_timeout--;
 
@@ -466,8 +469,8 @@ draw_set_color(make_color_rgb(46, 204, 113));
 //draw_text(x, (16 * 10), string(ambulance.sirens));
 for(i = 0; i &lt; ambulance.sirens; i++) {
     draw_sprite(sprite_siren, image_index,
-        x + (sprite_get_width(sprite_siren) / 2) + (32 * i),
-        (16 * 10) + (sprite_get_height(sprite_siren) / 2)
+        x + (sprite_get_width(sprite_siren) / 2) + (48 * i),
+        (16 * 10) + (sprite_get_height(sprite_siren) / 2) + 8
     );
 }
 

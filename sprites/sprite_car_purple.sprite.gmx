@@ -19,7 +19,7 @@
   <width>32</width>
   <height>48</height>
   <frames>
-    <frame index="0">images\sprite_car_0.png</frame>
-    <frame index="1">images\sprite_car_1.png</frame>
+    <frame index="0">images\sprite_car_purple_0.png</frame>
+    <frame index="1">images\sprite_car_purple_1.png</frame>
   </frames>
 </sprite>

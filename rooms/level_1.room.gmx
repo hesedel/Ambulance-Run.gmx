@@ -32,7 +32,7 @@ global.room_step[3,3] = 0;
 
 global.room_step[4,0] = 4; // lanes
 global.room_step[4,1] = 1; // column
-global.room_step[4,2] = 2; // repeat
+global.room_step[4,2] = 3; // repeat
 global.room_step[4,3] = 1; // has [0=nothing, 1=Siren, 2=Wrench]
 
 global.room_step[5,0] = 2; // lanes
@@ -312,7 +312,7 @@ global.room_step[59,3] = 0;
 
 global.room_step[60,0] = 4; // lanes
 global.room_step[60,1] = 1; // column
-global.room_step[60,2] = 1; // repeat
+global.room_step[60,2] = 2; // repeat
 global.room_step[60,3] = 1; // has [0=nothing, 1=Siren, 2=Wrench]
 
 global.room_step[61,0] = 2; // lanes

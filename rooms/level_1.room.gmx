@@ -23,7 +23,7 @@ global.room_step[1,3] = 0;
 global.room_step[2,0] = 4; // lanes
 global.room_step[2,1] = 0; // column
 global.room_step[2,2] = 5; // repeat
-global.room_step[2,3] = 1;
+global.room_step[2,3] = 0;
 
 global.room_step[3,0] = 3; // lanes
 global.room_step[3,1] = 1; // column
@@ -32,8 +32,8 @@ global.room_step[3,3] = 0;
 
 global.room_step[4,0] = 4; // lanes
 global.room_step[4,1] = 1; // column
-global.room_step[4,2] = 5; // repeat
-global.room_step[4,3] = 0;
+global.room_step[4,2] = 2; // repeat
+global.room_step[4,3] = 1; // has [0=nothing, 1=Siren, 2=Wrench]
 
 global.room_step[5,0] = 2; // lanes
 global.room_step[5,1] = 2; // column
@@ -212,8 +212,8 @@ global.room_step[39,3] = 0;
 
 global.room_step[40,0] = 4; // lanes
 global.room_step[40,1] = 0; // column
-global.room_step[40,2] = 5; // repeat
-global.room_step[40,3] = 1;
+global.room_step[40,2] = 2; // repeat
+global.room_step[40,3] = 1; // has [0=nothing, 1=Siren, 2=Wrench]
 
 global.room_step[41,0] = 3; // lanes
 global.room_step[41,1] = 1; // column
@@ -312,8 +312,8 @@ global.room_step[59,3] = 0;
 
 global.room_step[60,0] = 4; // lanes
 global.room_step[60,1] = 1; // column
-global.room_step[60,2] = 5; // repeat
-global.room_step[60,3] = 0; // 
+global.room_step[60,2] = 1; // repeat
+global.room_step[60,3] = 1; // has [0=nothing, 1=Siren, 2=Wrench]
 
 global.room_step[61,0] = 2; // lanes
 global.room_step[61,1] = 2; // column
@@ -405,11 +405,10 @@ global.room_step[78,1] = 2; // column
 global.room_step[78,2] = 5; // repeat
 global.room_step[78,3] = 0;
 
-
 global.room_step[79,0] = 3; // lanes
 global.room_step[79,1] = 1; // column
-global.room_step[79,2] = 5; // repeat
-global.room_step[79,3] = 1;
+global.room_step[79,2] = 2; // repeat
+global.room_step[79,3] = 1; // has [0=nothing, 1=Siren, 2=Wrench]
 
 global.room_step[80,0] = 4; // lanes
 global.room_step[80,1] = 1; // column
@@ -513,8 +512,8 @@ global.room_step[99,3] = 0;
 
 global.room_step[100,0] = 4; // lanes
 global.room_step[100,1] = 0; // column
-global.room_step[100,2] = 5; // repeat
-global.room_step[100,3] = 0;
+global.room_step[100,2] = 1; // repeat
+global.room_step[100,3] = 1; // has [0=nothing, 1=Siren, 2=Wrench]
 
 global.room_step[101,0] = 4; // lanes
 global.room_step[101,1] = 1; // column
@@ -608,8 +607,8 @@ global.room_step[118,3] = 0;
 
 global.room_step[119,0] = 4; // lanes
 global.room_step[119,1] = 3; // column
-global.room_step[119,2] = 5; // repeat
-global.room_step[119,3] = 0;
+global.room_step[119,2] = 2; // repeat
+global.room_step[119,3] = 1; // has [0=nothing, 1=Siren, 2=Wrench]
 
 global.room_step[120,0] = 3; // lanes
 global.room_step[120,1] = 2; // column
@@ -619,9 +618,195 @@ global.room_step[120,3] = 0;
 global.room_step[121,0] = 4; // lanes
 global.room_step[121,1] = 1; // column
 global.room_step[121,2] = 5; // repeat
-global.room_step[121,3] = 0;</code>
+global.room_step[121,3] = 0;
+
+global.room_step[122,0] = 4; // lanes
+global.room_step[122,1] = 1; // column
+global.room_step[122,2] = 5; // repeat
+global.room_step[122,3] = 0; // 
+
+global.room_step[123,0] = 2; // lanes
+global.room_step[123,1] = 2; // column
+global.room_step[123,2] = 5; // repeat
+global.room_step[123,3] = 0; // 
+
+global.room_step[124,0] = 4; // lanes
+global.room_step[124,1] = 1; // column
+global.room_step[124,2] = 5; // repeat
+global.room_step[124,3] = 0; // 
+
+global.room_step[125,0] = 2; // lanes
+global.room_step[125,1] = 2; // column
+global.room_step[125,2] = 5; // repeat
+global.room_step[125,3] = 0;
+
+global.room_step[126,0] = 4; // lanes
+global.room_step[126,1] = 0; // column
+global.room_step[126,2] = 5; // repeat
+global.room_step[126,3] = 0;
+
+global.room_step[127,0] = 4; // lanes
+global.room_step[127,1] = 2; // column
+global.room_step[127,2] = 5; // repeat
+global.room_step[127,3] = 0;
+
+global.room_step[128,0] = 4; // lanes
+global.room_step[128,1] = 0; // column
+global.room_step[128,2] = 5; // repeat
+global.room_step[128,3] = 0;
+
+global.room_step[129,0] = 3; // lanes
+global.room_step[129,1] = 2; // column
+global.room_step[129,2] = 5; // repeat
+global.room_step[129,3] = 0;
+
+global.room_step[130,0] = 4; // lanes
+global.room_step[130,1] = 1; // column
+global.room_step[130,2] = 5; // repeat
+global.room_step[130,3] = 0;
+
+global.room_step[131,0] = 2; // lanes
+global.room_step[131,1] = 1; // column
+global.room_step[131,2] = 5; // repeat
+global.room_step[131,3] = 0;
+
+global.room_step[132,0] = 2; // lanes
+global.room_step[132,1] = 0; // column
+global.room_step[132,2] = 5; // repeat
+global.room_step[132,3] = 0;
+
+global.room_step[133,0] = 4; // lanes
+global.room_step[133,1] = 0; // column
+global.room_step[133,2] = 1; // repeat
+global.room_step[133,3] = 1; // has [0=nothing, 1=Siren, 2=Wrench]
+
+global.room_step[134,0] = 4; // lanes
+global.room_step[134,1] = 1; // column
+global.room_step[134,2] = 5; // repeat
+global.room_step[134,3] = 0;
+
+global.room_step[135,0] = 4; // lanes
+global.room_step[135,1] = 2; // column
+global.room_step[135,2] = 5; // repeat
+global.room_step[135,3] = 0;
+
+global.room_step[136,0] = 4; // lanes
+global.room_step[136,1] = 1; // column
+global.room_step[136,2] = 5; // repeat
+global.room_step[136,3] = 0;
+
+global.room_step[137,0] = 2; // lanes
+global.room_step[137,1] = 2; // column
+global.room_step[137,2] = 5; // repeat
+global.room_step[137,3] = 0;
+
+global.room_step[138,0] = 4; // lanes
+global.room_step[138,1] = 1; // column
+global.room_step[138,2] = 5; // repeat
+global.room_step[138,3] = 0;
+
+global.room_step[139,0] = 4; // lanes
+global.room_step[139,1] = 3; // column
+global.room_step[139,2] = 5; // repeat
+global.room_step[139,3] = 0;
+
+global.room_step[140,0] = 3; // lanes
+global.room_step[140,1] = 2; // column
+global.room_step[140,2] = 5; // repeat
+global.room_step[140,3] = 0;
+
+global.room_step[141,0] = 4; // lanes
+global.room_step[141,1] = 1; // column
+global.room_step[141,2] = 5; // repeat
+global.room_step[141,3] = 0;
+
+global.room_step[142,0] = 2; // lanes
+global.room_step[142,1] = 1; // column
+global.room_step[142,2] = 5; // repeat
+global.room_step[142,3] = 0;
+
+global.room_step[143,0] = 4; // lanes
+global.room_step[143,1] = 1; // column
+global.room_step[143,2] = 1; // repeat
+global.room_step[143,3] = 1; // has [0=nothing, 1=Siren, 2=Wrench]
+
+global.room_step[144,0] = 2; // lanes
+global.room_step[144,1] = 2; // column
+global.room_step[144,2] = 5; // repeat
+global.room_step[144,3] = 0; // 
+
+global.room_step[145,0] = 4; // lanes
+global.room_step[145,1] = 1; // column
+global.room_step[145,2] = 5; // repeat
+global.room_step[145,3] = 0; // 
+
+global.room_step[146,0] = 2; // lanes
+global.room_step[146,1] = 2; // column
+global.room_step[146,2] = 5; // repeat
+global.room_step[146,3] = 0;
+
+global.room_step[147,0] = 4; // lanes
+global.room_step[147,1] = 0; // column
+global.room_step[147,2] = 5; // repeat
+global.room_step[147,3] = 0;
+
+global.room_step[148,0] = 4; // lanes
+global.room_step[148,1] = 2; // column
+global.room_step[148,2] = 5; // repeat
+global.room_step[148,3] = 0;
+
+global.room_step[149,0] = 4; // lanes
+global.room_step[149,1] = 0; // column
+global.room_step[149,2] = 5; // repeat
+global.room_step[149,3] = 0;
+
+global.room_step[150,0] = 3; // lanes
+global.room_step[150,1] = 2; // column
+global.room_step[150,2] = 5; // repeat
+global.room_step[150,3] = 0;
+
+global.room_step[151,0] = 3; // lanes
+global.room_step[151,1] = 0; // column
+global.room_step[151,2] = 5; // repeat
+global.room_step[151,3] = 0;
+
+global.room_step[152,0] = 4; // lanes
+global.room_step[152,1] = 1; // column
+global.room_step[152,2] = 5; // repeat
+global.room_step[152,3] = 0;
+
+global.room_step[153,0] = 2; // lanes
+global.room_step[153,1] = 3; // column
+global.room_step[153,2] = 5; // repeat
+global.room_step[153,3] = 0;
+
+global.room_step[154,0] = 3; // lanes
+global.room_step[154,1] = 3; // column
+global.room_step[154,2] = 5; // repeat
+global.room_step[154,3] = 0;
+
+global.room_step[155,0] = 4; // lanes
+global.room_step[155,1] = 1; // column
+global.room_step[155,2] = 2; // repeat
+global.room_step[155,3] = 1; // has [0=nothing, 1=Siren, 2=Wrench]
+
+global.room_step[156,0] = 4; // lanes
+global.room_step[156,1] = 0; // column
+global.room_step[156,2] = 5; // repeat
+global.room_step[156,3] = 0;
+
+global.room_step[157,0] = 3; // lanes
+global.room_step[157,1] = 1; // column
+global.room_step[157,2] = 5; // repeat
+global.room_step[157,3] = 0;
+
+global.room_step[158,0] = 4; // lanes
+global.room_step[158,1] = 2; // column
+global.room_step[158,2] = 5; // repeat
+global.room_step[158,3] = 0;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
+  <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>0</isSet>
     <w>0</w>
